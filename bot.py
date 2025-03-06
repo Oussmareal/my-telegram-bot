@@ -11,8 +11,8 @@ client = TelegramClient('multi_group_bot', api_id, api_hash)
 admin_user_id = 6747574207  
 
 # ✅ المجموعات المصدر والهدف
-source_groups = [-4658871439,-1002035975495]  # مجموعات المصدر
-target_groups = [-1002479735760,-1002479735760]  # مجموعات الهدف
+source_groups = [-4658871439, -1002035975495]  # مجموعات المصدر
+target_groups = [-1002479735760, -1002479735760]  # مجموعات الهدف
 
 async def send_admin_notification(message):
     """إرسال إشعار للمسؤول عند تشغيل أو إيقاف البوت"""
@@ -24,7 +24,7 @@ async def send_admin_notification(message):
 @client.on(events.NewMessage(chats=source_groups))  
 async def forward_message(event):
     """تحويل الرسائل بين المجموعات"""
- for target in target_groups:
+    for target in target_groups:
         try:
             if event.message.text:  # إذا كانت الرسالة نصية
                 await client.send_message(target, event.message.text)
